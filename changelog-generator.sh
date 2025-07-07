@@ -24,3 +24,7 @@ done
 
 echo "Changelog saved: $output_file"
 echo "Upgradable packages: $(wc -l < "$output_file" | awk '{print $1-2}')"
+
+
+# Or just paste this in your previous Parrot version:
+# sudo apt update && apt list --upgradable 2>/dev/null | tail -n +2 | awk '{ split($1,a,"/"); gsub(/\]/,"",$6); printf "%s %s [upgradable from: %s]\n", a[1], $2, $6 }'
